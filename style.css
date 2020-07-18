@@ -26,11 +26,16 @@ body {
 /* Header */
 header {
   height: 7.5rem;
+  padding: 0 1rem;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   background: url(/mountains.png) no-repeat center center/cover;
+  color: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 
 header * {
@@ -48,6 +53,30 @@ header::before {
   opacity: .6;
 }
 
+.temperature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperature h2 {
+  margin-top: -1rem;
+  font-size: 1rem;
+}
+
+#weather-icon img {
+  width: 4rem;
+  height: 4rem;
+}
+
+#time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 /* Main */
 main {
   height: 51rem;
@@ -59,7 +88,7 @@ main li {
   justify-content: space-between;
   align-items: center;
   height: 3rem;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid rgba(0, 0, 0, .3);
   padding: 0 1rem;
   font-size: 1.25rem;
 }
@@ -79,12 +108,15 @@ main li p {
   padding: 0 1rem;
 }
 
-
 .fa-check-circle {
   color: white;
   background: green;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.fa-trash-alt {
+  margin-left: 1rem;
 }
 
 /* Footer */
@@ -127,3 +159,9 @@ footer input {
 #add-button {
   cursor: pointer;
 }
+
+.up, .down        { cursor: pointer; }
+.up:after         { content: '△'; }
+.up:hover:after   { content: '▲'; }
+.down:after       { content: '▽'; }
+.down:hover:after { content: '▼'; }
