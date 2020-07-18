@@ -117,6 +117,16 @@ main li p {
 
 .fa-trash-alt {
   margin-left: 1rem;
+  color: #c00101;
+}
+
+.fa-arrow-up {
+  font-size: 1rem;
+}
+
+.fa-arrow-down {
+  margin-left: .4rem;
+  font-size: 1rem;
 }
 
 /* Footer */
@@ -159,9 +169,3 @@ footer input {
 #add-button {
   cursor: pointer;
 }
-
-.up, .down        { cursor: pointer; }
-.up:after         { content: '△'; }
-.up:hover:after   { content: '▲'; }
-.down:after       { content: '▽'; }
-.down:hover:after { content: '▼'; }
