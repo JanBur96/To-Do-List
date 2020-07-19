@@ -31,7 +31,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background: url(/mountains.png) no-repeat center center/cover;
+  background: url(./mountains.png) no-repeat center center/cover;
   color: #fff;
   font-size: 1.25rem;
   letter-spacing: 1px;
