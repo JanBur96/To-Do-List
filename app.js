@@ -117,6 +117,9 @@ addButtonEL.addEventListener('click', () => {
   itemsArray.push(toDo)
   localStorage.setItem('items', JSON.stringify(itemsArray))
 
+  location.reload()
+
+  window.scrollTo(0, 0)
 }
 })
 
@@ -158,7 +161,10 @@ addEL.addEventListener('keyup', (e) => {
 
     itemsArray.push(toDo)
     localStorage.setItem('items', JSON.stringify(itemsArray))
-  
+
+    location.reload()
+
+    window.scrollTo(0, 0)
   }
 })
 
@@ -166,21 +172,23 @@ addEL.addEventListener('keyup', (e) => {
 taskListEL.addEventListener('click', (e) => {
   if(e.target.classList[1] == "fa-trash-alt" ) {
     let targetedText = e.target.parentNode.childNodes[1].childNodes[0].data
-
+    console.log(targetedText)
     let targetLocal = JSON.parse(localStorage.getItem('items'))
+    console.log(targetLocal)
 
-
-    e.target.parentElement.remove()
-    
     for(let i = 0; i < data.length; i++) {
       if(targetedText == targetLocal[i]) {
         
         targetLocal.splice(i, 1)
         localStorage.clear()
         localStorage.setItem("items", JSON.stringify(targetLocal))
+
+        data.splice(i, 1)
+        location.reload()
       } else {
         
       }
+      e.target.parentElement.remove()
     }
   }
 })
@@ -199,33 +207,6 @@ taskListEL.addEventListener('click', (e) => {
     e.target.parentElement.childNodes[1].style.textDecorationLine = "none"
   }
 })
-
-// Get location and set weather
-if(navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(position => {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-
-    const api = `https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=9f92587ff09c4bb2a257074cdceeb176`
-
-    fetch(api)
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-      // Get data from api
-      const weatherInfo = data.data[0]
-      console.log(weatherInfo)
-      const icon = weatherInfo.weather.icon;
-      const temp = weatherInfo.temp;
-      
-      // DOM elements
-      document.getElementById('weather-icon-img').src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
-      const degreeEL = document.getElementById('temperature-degree')
-      degreeEL.textContent = temp + ' C°';
-    });
-  });
-};
 
 // Move task up / down
 function moveUp(element) {
