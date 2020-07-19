@@ -26,12 +26,12 @@ body {
 /* Header */
 header {
   height: 7.5rem;
-  padding: 0 1rem;
+  padding: 0 0 0 1rem;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background: url(./mountains.png) no-repeat center center/cover;
+  background: url(mountains.png) no-repeat center center/cover;
   color: #fff;
   font-size: 1.25rem;
   letter-spacing: 1px;
@@ -56,8 +56,12 @@ header::before {
 .temperature {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: #248ad8;
+  border-radius: 0 0 0 50%;
+  width: 5rem;
+  height: 5rem;
 }
 
 .temperature h2 {
