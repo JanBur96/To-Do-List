@@ -206,7 +206,7 @@ if(navigator.geolocation) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
 
-    const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=b9da68c37f7038bc52e2ec30464f26cf`
+    const api = `https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=9f92587ff09c4bb2a257074cdceeb176`
 
     fetch(api)
     .then(response => {
@@ -214,11 +214,13 @@ if(navigator.geolocation) {
     })
     .then(data => {
       // Get data from api
-      const temp = Math.round((data.main.temp - 273.15));
-      const icon = data.weather[0].icon;
+      const weatherInfo = data.data[0]
+      console.log(weatherInfo)
+      const icon = weatherInfo.weather.icon;
+      const temp = weatherInfo.temp;
       
       // DOM elements
-      document.getElementById('weather-icon-img').src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+      document.getElementById('weather-icon-img').src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
       const degreeEL = document.getElementById('temperature-degree')
       degreeEL.textContent = temp + ' C°';
     });
