@@ -208,11 +208,6 @@ function moveUp(element) {
 function moveDown(element) {
   if(element.nextElementSibling)
     element.parentNode.insertBefore(element.nextElementSibling, element);
-    console.log(itemsArray)
-    console.log(element.childNodes[1].textContent)
-    console.log(itemsArray.indexOf(element.childNodes[1].textContent))
-    console.log(element.previousElementSibling.childNodes[1].textContent)
-    console.log(itemsArray.indexOf(element.previousElementSibling.childNodes[1].textContent))
 
     const from = itemsArray.indexOf(element.childNodes[1].textContent);
     const to = itemsArray.indexOf(element.previousElementSibling.childNodes[1].textContent)
