@@ -137,7 +137,7 @@ main li p {
 footer {
   position: fixed;
   height: 4rem;
-  border-top: 1px solid red;
+  border-top: 1px solid rgba(0, 0, 0, .3);
   left: 0;
   bottom: 0;
   width: 100%;
