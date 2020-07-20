@@ -32,7 +32,6 @@ addButtonEL.addEventListener('click', () => {
 }
 })
 
-
 // Add To-Do when pressing enter
 addEL.addEventListener('keyup', (e) => {
   if(e.keyCode == 13 && addEL.value != '') {
@@ -40,18 +39,15 @@ addEL.addEventListener('keyup', (e) => {
   }
 })
 
-
 // Remove To-Do on click
 taskListEL.addEventListener('click', (e) => {
   if(e.target.classList[1] == "fa-trash-alt" ) {
-    let targetedText = e.target.parentNode.childNodes[1].childNodes[0].data
-    console.log(targetedText)
-    let targetLocal = JSON.parse(localStorage.getItem('items'))
-    console.log(targetLocal)
+    const targetedText = e.target.parentNode.childNodes[1].childNodes[0].data
+    const targetLocal = JSON.parse(localStorage.getItem('items'))
 
     for(let i = 0; i < data.length; i++) {
       if(targetedText == targetLocal[i]) {
-        
+
         targetLocal.splice(i, 1)
         localStorage.clear()
         localStorage.setItem("items", JSON.stringify(targetLocal))
@@ -77,6 +73,12 @@ taskListEL.addEventListener('click', (e) => {
     e.target.parentElement.childNodes[1].style.textDecorationLine = "none"
   }
 })
+
+taskListEL.addEventListener('click', function(e) {
+  if(e.target.className === 'fas fa-arrow-down') moveDown(e.target.parentNode);
+  else if(e.target.className === 'fas fa-arrow-up') moveUp(e.target.parentNode);
+});
+
 
 //////////////////// FUNCTIONS ////////////////////
 // Add todo from LS to list
@@ -179,32 +181,21 @@ function addToList () {
   window.scrollTo(0, 0)
 }
 
-// Move task up / down
+// Move task up
 function moveUp(element) {
   if(element.previousElementSibling)
     element.parentNode.insertBefore(element, element.previousElementSibling);
     
     const from = itemsArray.indexOf(element.childNodes[1].textContent);
     const to = itemsArray.indexOf(element.nextElementSibling.childNodes[1].textContent)
-
-    function moveItem(from, to) {
-      // remove `from` item and store it
-      var f = itemsArray.splice(from, 1)[0];
-      // insert stored item into position `to`
-      itemsArray.splice(to, 0, f);
-    }
     
     moveItem(from, to);
 
     localStorage.removeItem('items')
-    
     localStorage.setItem('items', JSON.stringify(itemsArray))
 }
 
-// Array.prototype.move = function(from, to) {
-//   this.splice(to, 0, this.splice(from, 1)[0]);
-// };
-
+// Move task down
 function moveDown(element) {
   if(element.nextElementSibling)
     element.parentNode.insertBefore(element.nextElementSibling, element);
@@ -212,26 +203,16 @@ function moveDown(element) {
     const from = itemsArray.indexOf(element.childNodes[1].textContent);
     const to = itemsArray.indexOf(element.previousElementSibling.childNodes[1].textContent)
 
-    function moveItem(from, to) {
-      // remove `from` item and store it
-      var f = itemsArray.splice(from, 1)[0];
-      // insert stored item into position `to`
-      itemsArray.splice(to, 0, f);
-    }
-    
     moveItem(from, to);
 
     localStorage.removeItem('items')
-    
     localStorage.setItem('items', JSON.stringify(itemsArray))
 }
 
-taskListEL.addEventListener('click', function(e) {
-  if(e.target.className === 'fas fa-arrow-down') moveDown(e.target.parentNode);
-  else if(e.target.className === 'fas fa-arrow-up') moveUp(e.target.parentNode);
-});
 
-
-// localStorage.removeItem('items')
-    
-//     localStorage.setItem('items', JSON.stringify(itemsArray))
+function moveItem(from, to) {
+  // remove `from` item and store it
+  let f = itemsArray.splice(from, 1)[0];
+  // insert stored item into position `to`
+  itemsArray.splice(to, 0, f);
+}
