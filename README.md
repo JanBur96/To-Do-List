@@ -1,4 +1,4 @@
-[A picture of the To-Do List](https://i.imgur.com/tVY7naN.png)
+![A picture of the To-Do List](https://i.imgur.com/tVY7naN.png)
 
 # Vanilla JS To-Do List
 
