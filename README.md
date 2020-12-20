@@ -2,7 +2,7 @@
 
 # Vanilla JS To-Do List
 
-I've created this small vanilla JS To-Do list to improve my vanilla JS skills. I won't improve this To-Do List anymore, since I'm focusing on my React To-Do list.
+I've created this small vanilla JS To-Do list to improve my vanilla JS skills. It won't get improved anymore, since it's only purpose was to help me learning JS.
 
 ## Tech used
 
